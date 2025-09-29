@@ -1,0 +1,74 @@
+<div class="ride-form">
+  <h2>Add New Ride</h2>
+
+  <form [formGroup]="rideForm" (ngSubmit)="submit()">
+    <!-- Vehicle Type -->
+    <label>
+      Vehicle Type:
+      <select formControlName="vehicleType">
+        <option value="">-- Select --</option>
+        <option value="Bike">Bike</option>
+        <option value="Car">Car</option>
+      </select>
+    </label>
+
+    <!-- Vehicle No -->
+    <label>
+      Vehicle No:
+      <input
+        type="text"
+        formControlName="vehicleNo"
+        placeholder="XX 00 XX 0000"
+        maxlength="13"
+        (keyup)="formatVehicleNo($event)"
+      />
+    </label>
+
+    <!-- Vacant Seats -->
+    <label>
+      Vacant Seats:
+      <input type="number" formControlName="vacantSeats" min="1" />
+      <div
+        *ngIf="val.vehicleType === 'Bike' && val.vacantSeats > 1"
+        class="warning"
+      >
+        Vacant seats cannot be more than 1 for Bike.
+      </div>
+    </label>
+
+    <!-- Time -->
+    <label>
+      Time:
+      <input type="time" formControlName="time" />
+    </label>
+
+    <!-- Pick-up Point -->
+    <label>
+      Pick-up Point:
+      <input
+        type="text"
+        formControlName="pickupPoint"
+        placeholder="Enter Pick-up Point"
+      />
+    </label>
+
+    <!-- Destination -->
+    <label>
+      Destination:
+      <input
+        type="text"
+        formControlName="destination"
+        placeholder="Enter Destination Point"
+      />
+    </label>
+
+    <button
+      type="submit"
+      [disabled]="
+        rideForm.invalid || (val.vehicleType === 'Bike' && val.vacantSeats > 1)
+      "
+    >
+      Add Ride
+    </button>
+  </form>
+</div>

@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  margin: 0px;
+}
+input {
+  height: 32px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+select {
+  height: 32px;
+  border: 1px solid grey;
+  border-radius: 10px;
+}
+button {
+  background: yellow;
+  height: 32px;
+  width: 50%;
+  margin: 0px auto;
+  border: 1px solid red;
+  border-radius: 10px;
+  font-size: 20px;
+  color: red;
+  cursor: pointer;
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}

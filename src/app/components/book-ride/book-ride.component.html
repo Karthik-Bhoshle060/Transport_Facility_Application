@@ -1,0 +1,62 @@
+<div class="book-ride-container">
+  <!-- Filter by Vehicle Type -->
+  <div class="filter">
+    <label for="vehicleFilter">Filter by Vehicle Type:</label>
+    <select id="vehicleFilter" [(ngModel)]="selectedVehicleType">
+      <option value="All">All</option>
+      <option value="Bike">Bike</option>
+      <option value="Car">Car</option>
+    </select>
+  </div>
+
+  <div *ngIf="alreadyBookedTodayRide" class="booked-ride">
+    <p class="empty-message">
+      {{ "Your Booked Ride Details" }}
+    </p>
+    <div class="ride-card">
+      <p>
+        <b>Vehicle:</b> {{ bookedRide.vehicleType }} ({{
+          bookedRide.vehicleNo
+        }})
+      </p>
+      <p><b>Owner EmployeeId ID:</b> {{ bookedRide.ownerEmployeeId }}</p>
+      <p><b>Time:</b> {{ bookedRide.timeISO }}</p>
+      <p>
+        <b>From:</b> {{ bookedRide.pickupPoint }} → <b>To:</b>
+        {{ bookedRide.destination }}
+      </p>
+    </div>
+  </div>
+  <ng-container *ngIf="!alreadyBookedTodayRide">
+    <!-- Ride List -->
+    <div
+      *ngIf="
+        (masterAvailableRide | vehicleFilter : selectedVehicleType).length > 0;
+        else noRides
+      "
+      class="ride-card-container"
+    >
+      <div
+        *ngFor="
+          let ride of masterAvailableRide | vehicleFilter : selectedVehicleType
+        "
+        class="ride-card"
+      >
+        <p><b>Vehicle:</b> {{ ride.vehicleType }} ({{ ride.vehicleNo }})</p>
+        <p><b>Owner EmployeeId ID:</b> {{ ride.ownerEmployeeId }}</p>
+        <p><b>Vacant Seats:</b> {{ ride.vacantSeats }}</p>
+        <p><b>Time:</b> {{ ride.timeISO }}</p>
+        <p>
+          <b>From:</b> {{ ride.pickupPoint }} → <b>To:</b>
+          {{ ride.destination }}
+        </p>
+        <button (click)="bookRide(ride)">Book Ride</button>
+      </div>
+    </div>
+
+    <!-- Empty message -->
+    <ng-template #noRides>
+      <p class="empty-message">⚠️ No rides available to book.</p>
+    </ng-template>
+  </ng-container>
+</div>

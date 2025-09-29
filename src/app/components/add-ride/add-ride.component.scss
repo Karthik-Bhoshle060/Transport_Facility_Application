@@ -1,0 +1,29 @@
+.ride-form {
+  height: auto;
+  margin: 50px auto;
+  width: 700px;
+  border: 2px solid red;
+  padding: 10px;
+  border-radius: 10px;
+  h2 {
+    text-align: center;
+    margin: 10px;
+  }
+  form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin: 10px auto;
+      width: 85%;
+    }
+    .warning {
+      color: #b71c1c; /* red */
+      font-size: 13px;
+      margin-top: 5px;
+    }
+  }
+}

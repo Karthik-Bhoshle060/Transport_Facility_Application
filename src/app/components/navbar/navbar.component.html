@@ -1,0 +1,22 @@
+<div class="navbar-container">
+  <img src="/assets/images/dummy_logo.png" />
+  <p class="app-name">Transport Facility Management</p>
+  <a
+    routerLink="/add-ride"
+    *ngIf="employeeService.loggedInEmployee?.name && currentPath != '/add-ride'"
+    >Add Ride</a
+  >
+  <a
+    routerLink="/book-ride"
+    *ngIf="
+      employeeService.loggedInEmployee?.name && currentPath != '/book-ride'
+    "
+    >Book Ride</a
+  >
+  <div class="user-name" *ngIf="employeeService.loggedInEmployee?.name">
+    <p (click)="logOut()" class="log-out">Log Out</p>
+    <p>
+      {{ employeeService.loggedInEmployee?.name }}
+    </p>
+  </div>
+</div>

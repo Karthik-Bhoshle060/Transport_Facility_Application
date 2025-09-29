@@ -1,0 +1,35 @@
+.filter {
+  margin: auto;
+  width: 500px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  label {
+    text-align: center;
+    font-size: 23px;
+    margin: 5px;
+  }
+}
+.ride-card-container {
+  display: flex;
+  flex-direction: row;
+  padding: 20px;
+  gap: 10px;
+}
+.booked-ride {
+  display: flex;
+  flex-direction: column;
+  .ride-card {
+    margin: auto;
+  }
+}
+.ride-card {
+  width: 30%;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 10px;
+}
+.empty-message {
+  text-align: center;
+  font-size: 30px;
+}
