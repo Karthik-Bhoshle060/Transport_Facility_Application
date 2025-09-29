@@ -1,0 +1,1 @@
+body{margin:0}input,select{height:32px;border:1px solid grey;border-radius:10px}button{background:yellow;height:32px;width:50%;margin:0 auto;border:1px solid red;border-radius:10px;font-size:20px;color:red;cursor:pointer}button:disabled{opacity:.5;cursor:not-allowed}
